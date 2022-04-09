@@ -1,0 +1,40 @@
+.section {
+    padding-bottom: 100px;
+    // background-color: #2d3436;
+    // background-image: linear-gradient(to bottom, #2d3436 0%, #000000 74%);
+
+    // background-image: url("/bg-gradient.png");
+    // background-size: cover;
+
+    border-top: 1px solid rgba(225, 225, 225, 0.3);
+
+    &__heading {
+        padding: 100px 0px 50px 0px;
+        max-width: 1400px;
+        margin: 0 auto;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .h2 {
+            width: fit-content;
+            color: #fff;
+            font-size: 35px;
+            font-family: $font-secondary;
+        }
+        .p {
+            width: fit-content;
+            cursor: pointer;
+        }
+    }
+
+    &__nfts {
+        display: flex;
+        overflow: hidden;
+    }
+
+    &__col{
+        padding: 10px;
+    }
+}
