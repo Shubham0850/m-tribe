@@ -4,14 +4,18 @@ import "../styles/main.scss";
 import Head from "next/head";
 import Footer from "../components/Footer";
 import Nav from "../components/Nav";
+import { MoralisProvider } from "react-moralis";
 
 function Layout({ children }) {
   return (
-    <>
+    <MoralisProvider
+      appId="T8e6cdk14lL3mhhkG3a7MnvtqbkS4bPHIQzRbugr"
+      serverUrl="https://jia8uhhivhhy.usemoralis.com:2053/server"
+    >
       <Nav />
       {children}
       <Footer />
-    </>
+    </MoralisProvider>
   );
 }
 

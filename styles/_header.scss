@@ -23,6 +23,10 @@
     &__col {
         @include center;
     }
+
+    &__box{
+        padding: 150px 0px;
+    }
 }
 
 .bg::after {

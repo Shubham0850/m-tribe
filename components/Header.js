@@ -13,12 +13,12 @@ export default function Header() {
               <div>
                 <h1 className="h1">{`m-tRibe dao tools & standards`}</h1>
                 <p className="p mb-5">
-                At M-tribe, we are focused on building DAO tools and standards to empower existing NFT Communities to transform into fully functioning DAOs. We leverage good organizational practices from Web-2.0  and use them for effective collaboration in Web-3.0 (DAOs).
+                At M-tribe, we are focused on building DAO tools and standards to empower existing NFT Communities transform into fully functioning DAOs. We leverage good organizational practices from Web-2.0  and use them for effective collaboration in Web-3.0 (DAOs).
                 </p>
                 <Row>
                   <Col>
                     <Link href="/collections/12">
-                      <button className="btns">Collections</button>
+                      <button className="btns">NFT Communities</button>
                     </Link>
                   </Col>
                 </Row>
