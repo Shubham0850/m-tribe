@@ -61,6 +61,10 @@ export default function Nav() {
             <span className="nav__link">
               <Link href="/proposals">Proposals</Link>
             </span>
+
+            <span className="nav__link">
+              <Link href="/nft-communities">Nft Communities</Link>
+            </span>
           </Col>
 
           <Col md={3} className="nav__cta">
