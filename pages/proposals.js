@@ -118,6 +118,7 @@ export default function Proposals() {
   };
 
   return (
+    /*
     <div className="header">
       <div className="bg"></div>
       <Container fluid className="cont">
@@ -225,8 +226,8 @@ export default function Proposals() {
                   placeholder="Communication Plan (Daily, Weekly)"
                 />
               </Form.Group>
-            </Form>
-            {/* <form onSubmit={handleSubmit}>
+            </Form> */
+            {<form onSubmit={handleSubmit}>
               <p>
                 <label>Name</label>
                 <input type="text" name="name" id="name" required />
@@ -294,10 +295,7 @@ export default function Proposals() {
                   <option value="Monthly">Monthly</option>
                 </select>
               </p>
-              <p>
-                <input type="submit" />
-              </p>
-            </form> */}
+            </form> }
           </Modal.Body>
           <Modal.Footer>
             <button className="btns" onClick={handleClose}>
