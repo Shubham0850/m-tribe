@@ -4,34 +4,33 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { useMoralis, useNFTBalances } from "react-moralis";
+import NftCard from "../components/NftCard";
 
 export default function NftCommunities() {
   const router = useRouter();
   const { address } = router.query;
   const [nfts, setNfts] = useState([]);
-  const { getNFTBalances, data, error, isLoading, isFetching } =
-    useNFTBalances();
-
-  const fetchNft = async () => {
-    const items = await fetch(
-      `https://api.opensea.io/api/v1/assets?owner=${address}&order_direction=desc&offset=0&limit=50`
-    )
-      .then((res) => res.json())
-      .then((res) => {
-        return res.assets;
-      })
-      .catch((e) => {
-        console.error(e);
-        console.error("Could not talk to OpenSea");
-        return null;
-      });
-  };
 
   useEffect(() => {
-    getNFTBalances({ params: { chain: "0x4" } })
-      .then((res) => setNfts(res?.result))
-      .catch((err) => console.log(err));
- 
+    const options = {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        "X-API-Key":
+          "l0yeoaFVI3gtnwHARzSKGgMIi1O5eVkXQPlpLwpZ7mOByd4kDvmvFGmCDCIR3H5q",
+      },
+    };
+
+    fetch(
+      `https://deep-index.moralis.io/api/v2/${`0x0EcB0f4F0Cc7f78b109D5EF748021D799351D57b`}/nft?chain=eth&format=decimal`,
+      options
+    )
+      .then((response) => response.json())
+      .then((response) => {
+        console.log(response);
+        setNfts(response.result);
+      })
+      .catch((err) => console.error(err));
   }, []);
 
   return (
@@ -41,21 +40,27 @@ export default function NftCommunities() {
         <div className="header__box">
           <h1 className="h2">NFT Communities</h1>
 
-          {nfts?.map((nft, index) => {
-            console.log(nft)
-            return (
-             <div>
-                <img
-                src={nft?.image || "error"}
-                alt=""
-                style={{ height: "300px" }}
-                
-              />
-              <p className="p">{nft?.name}</p>
-              <p className="p">{nft?.token_address}</p>
-             </div>
-            );
-          })}
+          <div className="flex flex-wrap">
+            {nfts?.map((nft, index) => {
+              const metaData = JSON.parse(nft.metadata);
+              console.log("metadata✅", metaData);
+              if (metaData !== null) {
+                return (
+                  <div className="w-[20%]">
+                    <NftCard
+                    key={index}
+                    imageSrc={metaData?.image}
+                    name={nft.name}
+                    symbol={nft.symbol}
+                    tokenId={nft.token_id}
+                    contractType={nft.contract_type}
+                    contractAddress={nft.token_address}
+                  />
+                  </div>
+                );
+              }
+            })}
+          </div>
         </div>
       </Container>
     </div>

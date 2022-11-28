@@ -23,7 +23,7 @@ export default function Footer() {
         <p className="footer__cright p text-center p-3">
           © All Right is reserved by us. Design and Developed by{" "}
           <a href="http://shubhamraj.live/" rel="noreferrer" target="_blank">
-            M-Tribe Team
+            N-DAO Team
           </a>
         </p>
       </div>

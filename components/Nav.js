@@ -3,42 +3,23 @@ import { useRouter } from "next/router";
 import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { useMoralis } from "react-moralis";
+import { connectMeta } from "../utils/walletConnect";
 
 export default function Nav() {
   const router = useRouter();
   const [prevScrollPos, setPrevScrollPos] = useState(0);
   const [visible, setVisible] = useState(true);
-  const [address, setAddress] = useState();
-  const { authenticate, isAuthenticated, user, logout } = useMoralis();
-
-  const handleScroll = () => {
-    const currentScrollPos = window.pageYOffset;
-
-    setVisible(
-      (prevScrollPos > currentScrollPos &&
-        prevScrollPos - currentScrollPos > 70) ||
-        currentScrollPos < 10
-    );
-
-    setPrevScrollPos(currentScrollPos);
-  };
+  const [wallet, setWallet] = useState(null);
 
   // new useEffect:
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    setAddress(user?.attributes?.accounts[0]);
+    const address = localStorage.getItem("address");
 
-    // if (address) {
-    //   router.push({
-    //     pathname: "/nft-communities",
-    //     query: {
-    //       address,
-    //     },
-    //   });
-    // }
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [prevScrollPos, visible, handleScroll, authenticate, user]);
+    if (address) {
+      const addressString = `${address.slice(0, 5)}...${address.slice(-4)}`;
+      setWallet(addressString);
+    }
+  }, []);
 
   return (
     <div className={`nav ${visible && `nav-blured-bg`}`}>
@@ -68,12 +49,12 @@ export default function Nav() {
           </Col>
 
           <Col md={3} className="nav__cta">
-            {isAuthenticated ? (
-              <button className="btns--connected btns" onClick={logout}>
-                Logout
+            {wallet ? (
+              <button className="btns--connected btns">
+                {wallet}
               </button>
             ) : (
-              <button className="btns" onClick={authenticate}>
+              <button className="btns" onClick={connectMeta}>
                 Connect wallet
               </button>
             )}

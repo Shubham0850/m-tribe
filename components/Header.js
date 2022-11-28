@@ -11,9 +11,9 @@ export default function Header() {
           <Row className="header__row">
             <Col sm={12} md={6} className="header__col">
               <div>
-                <h1 className="h1">{`m-tRibe dao tools & standards`}</h1>
+                <h1 className="h1">{`n-DAO dao tools & standards`}</h1>
                 <p className="p mb-5">
-                At M-tribe, we are focused on building DAO tools and standards to empower existing NFT Communities transform into fully functioning DAOs. We leverage good organizational practices from Web-2.0  and use them for effective collaboration in Web-3.0 (DAOs).
+                At n-DAO, we are focused on building DAO tools and standards to empower existing NFT Communities transform into fully functioning DAOs. We leverage good organizational practices from Web-2.0  and use them for effective collaboration in Web-3.0 (DAOs).
                 </p>
                 <Row>
                   <Col>
@@ -30,7 +30,7 @@ export default function Header() {
                   "https://boardroom.tv/wp-content/uploads/2021/11/Overtime-x-NFT-FC.gif"
                 }
               /> */}
-              <img src="/header.png" alt="header"/>
+              <img src="https://cdn3d.iconscout.com/3d/premium/thumb/decentralized-finance-4731024-3934283.png" alt="header"/>
             </Col>
           </Row>
         </div>
